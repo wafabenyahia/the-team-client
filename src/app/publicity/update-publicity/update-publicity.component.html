@@ -1,0 +1,94 @@
+
+<div class="card-body p-lg-5">
+    <h2 style="color: #2d4474 ;text-align: center;font-weight: bold;">Update publicity : </h2>
+    <div class="input-group mb-4">
+        <input class="form-control" [(ngModel)]="publicity.name"placeholder="Name" type="text">
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="ni ni-tv-2"></i></span>
+        </div>
+    </div>
+    <div class="input-group mb-4">
+        <input class="form-control" [(ngModel)]="publicity.cost"placeholder="cost" type="number">
+        <div class="input-group-append">
+            <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
+        </div>
+    </div>
+
+    <div class="input-daterange datepicker row align-items-center">
+        <div class="col">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <input class="form-control datepicker" placeholder="Select date start" name="dp1" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" (select)="mama($event)" type="text" [dayTemplate]="t" (dateSelect)="startDateChanged($event)" autocomplete="off"/>
+                    <ng-template #t let-date let-focused="focused" >
+           <span class="custom-day"
+                 [class.text-white]="isActive(date)"
+                 [class.range-end]="isRangeEnd(date)"
+                 [class.range-start]="isRangeStart(date)"
+                 [class.btn-light]="isActive(date)"
+                 [class.bg-primary]="isActive(date)"
+                 [class.range]="isInRange(date)"
+                 [class.faded]="isInRange(date)"
+           >
+             {{ date.day }}
+           </span>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <input class="form-control datepicker" placeholder="Select date End" name="dp2" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" type="text" [dayTemplate]="t1" (dateSelect)="endDateChanged($event)" autocomplete="off"/>
+                    <ng-template #t1 let-date let-focused="focused" >
+           <span class="custom-day"
+                 [class.text-white]="isActive(date)"
+                 [class.range-end]="isRangeEnd(date)"
+                 [class.range-start]="isRangeStart(date)"
+                 [class.btn-light]="isActive(date)"
+                 [class.bg-primary]="isActive(date)"
+                 [class.range]="isInRange(date)"
+                 [class.faded]="isInRange(date)"
+           >
+             {{ date.day }}
+           </span>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    <div class="col">
+        <div class="form-group">
+            <div class="input-group ">
+
+                <input class="form-control" [(ngModel)]="publicity.ageDebut"placeholder="Age start:" type="number">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="ni ni-fat-delete"></i></span>
+
+                </div>
+
+                <input class="form-control" [(ngModel)]="publicity.ageFin"placeholder="Age End" type="number">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="ni ni-fat-add"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-4">
+        <select class="form-select dropdown-menu-xl" [(ngModel)]="publicity.domain" style="height: 50px; background-color: transparent ;color: #cccccc; border-color: #cccccc " >
+            <option  *ngFor="let dom of myArray"   [value]="dom">{{dom}}</option>
+        </select>
+    </div>
+</div>
+
+    <div>
+        <button type="button" (click)="close()" class="btn btn-outline-secondary btn-round btn-block btn-lg">Cancel </button>
+        <button type="button" (click)="modify()" class="btn btn-default btn-round btn-block btn-lg">Update </button>
+
+    </div>
+
