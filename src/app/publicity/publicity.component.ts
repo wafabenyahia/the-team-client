@@ -137,7 +137,7 @@ export class PublicityComponent implements OnInit {
   }
   openDialogAdd(): void {
     const dialogRef = this.dialog.open(AddPublicityComponent, {
-      width: '600px',
+      width: '800px',
       position: {
         top: '10px'
       }
@@ -150,7 +150,7 @@ export class PublicityComponent implements OnInit {
 
   openDialogModify(id: number): void {
     const dialogRef = this.dialog.open(UpdatePublicityComponent, {
-      width: '600px',
+      width: '800px',
       position: {
         top: '10px'
       },

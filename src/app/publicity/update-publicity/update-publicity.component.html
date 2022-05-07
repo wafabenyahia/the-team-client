@@ -13,16 +13,16 @@
             <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
         </div>
     </div>
-
-    <div class="input-daterange datepicker row align-items-center">
-        <div class="col">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                    </div>
-                    <input class="form-control datepicker" placeholder="Select date start" name="dp1" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" (select)="mama($event)" type="text" [dayTemplate]="t" (dateSelect)="startDateChanged($event)" autocomplete="off"/>
-                    <ng-template #t let-date let-focused="focused" >
+    <div class="row d-flex justify-content-lg-center">
+        <div class="input-daterange datepicker row align-items-center">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control datepicker" placeholder="Select date start" name="dp1" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" (select)="mama($event)" type="text" [dayTemplate]="t" (dateSelect)="startDateChanged($event)" autocomplete="off"/>
+                        <ng-template #t let-date let-focused="focused" >
            <span class="custom-day"
                  [class.text-white]="isActive(date)"
                  [class.range-end]="isRangeEnd(date)"
@@ -34,10 +34,10 @@
            >
              {{ date.day }}
            </span>
-                    </ng-template>
+                        </ng-template>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
             <div class="form-group">
@@ -62,25 +62,34 @@
                 </div>
             </div>
         </div>
-    <div class="col">
-        <div class="form-group">
-            <div class="input-group ">
+    </div>
+    <div class="row d-flex justify-content-lg-center">
 
-                <input class="form-control" [(ngModel)]="publicity.ageDebut"placeholder="Age start:" type="number">
-                <div class="input-group-append">
-                    <span class="input-group-text"><i class="ni ni-fat-delete"></i></span>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="publicity.ageDebut"placeholder="Age start:" type="number">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="ni ni-fat-delete"></i></span>
 
+                    </div>
                 </div>
-
-                <input class="form-control" [(ngModel)]="publicity.ageFin"placeholder="Age End" type="number">
-                <div class="input-group-append">
-                    <span class="input-group-text"><i class="ni ni-fat-add"></i></span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="publicity.ageFin"placeholder="Age End" type="number">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="ni ni-fat-add"></i></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="input-group mb-4">
-        <select class="form-select dropdown-menu-xl" [(ngModel)]="publicity.domain" style="height: 50px; background-color: transparent ;color: #cccccc; border-color: #cccccc " >
+    <div class="input-group mb-4 d-flex justify-content-lg-center">
+        <select class="form-select dropdown-menu-xl" [(ngModel)]="publicity.domain" style="height: 50px; background-color: transparent ; border-color: #cccccc "  >
+            <option selected>select domain</option>
             <option  *ngFor="let dom of myArray"   [value]="dom">{{dom}}</option>
         </select>
     </div>

@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="input-group mb-4">
-        <input class="form-control" accept="image/png" placeholder="File"  (change)="onFileChange($event.target.files) " type="file">
+        <input class="form-control" accept="image/png, image/gif, image/jpeg" placeholder="File"  (change)="onFileChange($event.target.files) " type="file">
         <div class="input-group-append">
             <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
         </div>
@@ -24,9 +24,9 @@
             <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
         </div>
     </div>
-
+<div class="row d-flex justify-content-lg-center">
     <div class="input-daterange datepicker row align-items-center">
-        <div class="col">
+        <div class="col-lg-6">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -73,25 +73,34 @@
             </div>
         </div>
     </div>
-    <div class="col">
-        <div class="form-group">
-            <div class="input-group ">
+</div>
+    <div class="row d-flex justify-content-lg-center">
 
+               <div class="col-lg-6">
+                   <div class="form-group">
+                       <div class="input-group">
                 <input class="form-control" [(ngModel)]="publicity.ageDebut"placeholder="Age start:" type="number">
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="ni ni-fat-delete"></i></span>
 
                 </div>
-
+               </div>
+                   </div>
+               </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="input-group">
                 <input class="form-control" [(ngModel)]="publicity.ageFin"placeholder="Age End" type="number">
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="ni ni-fat-add"></i></span>
                 </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="input-group mb-4">
-        <select class="form-select dropdown-menu-xl" [(ngModel)]="publicity.domain" style="height: 50px; background-color: transparent ;color: #cccccc; border-color: #cccccc " >
+    <div class="input-group mb-4 d-flex justify-content-lg-center">
+        <select class="form-select dropdown-menu-xl" [(ngModel)]="publicity.domain" style="height: 50px; background-color: transparent ; border-color: #cccccc "  >
+            <option selected>select domain</option>
             <option  *ngFor="let dom of myArray"   [value]="dom">{{dom}}</option>
         </select>
     </div>
