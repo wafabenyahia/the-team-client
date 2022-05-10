@@ -10,6 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import {PublicityComponent} from './publicity/publicity.component';
 import {MainComponent} from './main/main.component';
+import {PublicationComponent} from './publication/publication.component';
 
 const routes: Routes = [
     // { path: 'home',             component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
             { path: 'user-profile',     component: ProfileComponent },
             { path: 'register',           component: SignupComponent },
             { path: 'landing',          component: LandingComponent },
+            { path: 'publication',          component: PublicationComponent },
             // { path: 'login',          component: LoginComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             {path: 'publicity', component: PublicityComponent},

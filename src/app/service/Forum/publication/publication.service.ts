@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Publication} from '../../../model/forum/publication/publication.model';
 // @ts-ignore
 import {Observable} from 'rxjs/dist/types';

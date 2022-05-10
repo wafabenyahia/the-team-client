@@ -1,0 +1,128 @@
+<button class="btn btn-outline-secondary float-right" (click)="close()" style="border-radius: 50%; font-weight: normal; width: 50px ;height: 50px">
+<!--            <i class="ni ni-fat-remove"></i>-->
+    X
+</button>
+<h2 style="color: #2d4474 ;text-align: center;font-weight: bold;">Add Publication : </h2>
+<mat-divider style="color: #2d4474; font-size: 50px"></mat-divider>
+<div>
+    <div *ngIf="(type === '' || type==='photo' ) ">
+    <div class="colinput">
+
+        <textarea [(ngModel)]="message" [ngModelOptions]="{standalone: true}" style="border: none ; resize:none"
+                  (keypress)="IsTyping()" type="text" placeholder="Write your topic..."
+                  class="form-control pb-10" id="exampleFormControlTextarea1" rows="4" ></textarea>
+
+        <i class='float-right attachment'
+           (click)="toggled = !toggled"
+           [(emojiPickerIf)]="toggled"
+           [emojiPickerDirection]="'top'"
+           (emojiPickerSelect)="handleSelection($event)"><mat-icon style="color: #b1b1b1"> sentiment_satisfied_alt</mat-icon></i>
+<!--        <button class="submit">Send <i class="fa fa-paper-plane" aria-hidden="true"></i></button>-->
+    </div></div>
+    <br>
+    <div [ngSwitch]="type">
+        <ng-template [ngSwitchCase]= "'photo'">
+            <div class="">
+                <div class="d-flex align-items-center justify-content-center py-2 position-relative" style="background-color: #eee; border: 2px dashed rgb(175, 169, 169); color: #ddd; height: 100%;">
+                    <span class="font-size-32 text-gray" style="font-weight: 500;"><mat-icon>insert_photo</mat-icon></span>
+                    <input type="file" accept="image/*"  (change)="onFileChange($event.target.files)" id="post_upload" multiple="" class="file position-absolute w-100 h-100" style="opacity: 0;">
+                </div>
+            </div>
+
+        </ng-template>
+        <ng-template [ngSwitchCase]= "'survey'">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i>?</i></span>
+                            </div>
+                            <input [(ngModel)]="publication.survey.question" class="form-control form-control-alternative" placeholder="Write your question " type="text">
+                        </div>
+                    </div></div>
+                <div class="col-md-10 ml-2">
+            <div class="form-group">
+                <input type="text" [(ngModel)]="option1.option"  class="form-control form-control-alternative"  placeholder="Option 1">
+            </div></div>
+                <div class="col-md-10 ml-2">
+            <div class="form-group">
+                <input type="text" [(ngModel)]="option2.option"class="form-control form-control-alternative"  placeholder="Option 2">
+            </div></div></div>
+        </ng-template>
+        <ng-template [ngSwitchCase]= "'tags'">
+
+
+<!--            <mat-form-field style="width: 80%;height: 200px" >-->
+<!--                <mat-label>Select Users:</mat-label>-->
+
+            <h7 style="color :steelblue">select users for identifie</h7>
+
+                    <mat-select-trigger class="mb-10">
+                        <mat-chip-list>
+
+                            <mat-chip *ngFor="let user of usersSel"
+                                      [removable]="true" (removed)="onCatRemoved(user)"  selected>
+                                {{ user.username }}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-select-trigger>
+                <mat-selection-list  [(ngModel)]="usersSel"  [formControl]="usersControl" multiple class="ml-4" >
+                    <mat-list-option   *ngFor="let user of users" [value]="user"  color="primary" >
+                        {{ user.username }}
+                    </mat-list-option>
+                </mat-selection-list>
+<!--                <mat-selection-list #list >-->
+<!--                    <mat-list-option *ngFor="let user of users" [value]="user" >-->
+<!--                    {{user.username}}-->
+<!--                    </mat-list-option>-->
+<!--                </mat-selection-list>-->
+<!--            </mat-form-field>-->
+        </ng-template>
+        <ng-template [ngSwitchCase]= "'mood'" >
+                        <h1> Your mood are :{{mood}}</h1>
+            <div>    <emoji-mart  [style]="{width:'100%'  }" set="{{set}}"  (emojiSelect)="addEmoji($event)" title="Pick your mood…"></emoji-mart>
+            </div>
+        </ng-template>
+        <ng-template [ngSwitchCase]= "'location'">
+            <div class="col-md-11">
+                <div class="form-group">
+                    <div class="input-group input-group-alternative mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-map-big"></i> </span>
+                        </div>
+                        <input [(ngModel)]="publication.location" class="form-control form-control-alternative" placeholder="Write your location " type="text">
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template [ngSwitchCase]= "'take'">
+            <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+            <div class="snapshot" *ngIf="webcamImage">
+                <img height="50px" [src]="webcamImage.imageAsDataUrl" />
+            </div>
+        </ng-template>
+
+        <ng-template ngSwitchDefault>  </ng-template>
+    </div>
+    <br>
+    <div class="row" style="  border-width: 1px; border-radius: 12px" >
+        <div class="col-12 col-md-6">
+        <h3 class="ml-4 pr-10 ">Add to your post : </h3></div>
+        <div class="col-12 col-md-6">
+   <button class="nods" style="color: #3b5999" (click)="type='photo'"> <mat-icon >add_photo_alternate</mat-icon></button>
+    <button class="nods"  style="color: pink" (click)="type='survey'"><mat-icon>question_answer</mat-icon></button>
+    <button class="nods" style="color: steelblue" (click)="type='tags'"><i class="ni ni-tag"></i></button>
+    <button class="nods" style="color: red" (click)="type='location'"><i class="ni ni-square-pin"></i></button>
+    <button  class="nods"style="color: yellow" (click)="type='mood'"> <mat-icon >sentiment_very_satisfied</mat-icon></button>
+    <button  class="nods" style="color: darkcyan" (click)="type='take'"> <mat-icon >add_a_photo</mat-icon></button>
+    </div>
+    </div>
+
+</div>
+
+<div>
+    <button type="button" (click)="addP()" class="btn btn-default btn-round btn-block btn-lg">Save </button>
+</div>
+

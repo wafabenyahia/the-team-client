@@ -2,10 +2,10 @@ import {Survey} from './survey';
 
 
 export class Option {
-  id?: number;
+  id: number;
   option: any ;
-  iduser?: number[];
-  survey?: Survey ;
+  iduser: number[] = [];
+  survey: Survey ;
 
   constructor() {
   }

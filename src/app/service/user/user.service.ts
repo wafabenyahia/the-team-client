@@ -52,8 +52,7 @@ export class UserService {
 
   findById(id: any): Observable<User> {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + JSON.parse(<string>localStorage.getItem('token'))});
-    // @ts-ignore
-    return this.http.get(this.baseUrl + 'utilisateur/' + id , {
+    return this.http.get(this.baseUrl + 'users/' + id , {
       headers: this.headers
     });
   }

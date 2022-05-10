@@ -4,7 +4,7 @@ export class Survey {
   id: any;
   question: any ;
 
-  options: Option[] =[];
+  options: Option[] = [];
 
   constructor() {
   }

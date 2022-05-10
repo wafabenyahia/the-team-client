@@ -1,34 +1,29 @@
 import { Injectable } from '@angular/core';
-
-
 import {environment} from '../../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// @ts-ignore
-import {Observable} from 'rxjs/dist/types';
+import {Observable} from 'rxjs';
+import {Rating} from '../../../model/forum/publication/rating';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FileService {
+export class RatingService {
   baseUrl = environment.webservice.baseUrl;
   private headers: HttpHeaders = new HttpHeaders();
   constructor(private http: HttpClient) { }
 
-  downloadFile(nameFile: String): Observable<any> {
+  add(rating: Rating, id: number) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + JSON.parse(<string>localStorage.getItem('token'))});
-    return this.http.get(this.baseUrl + 'downloadFile/' + nameFile, {
-      headers: this.headers,
-      responseType: 'blob'
+    return this.http.post(this.baseUrl + 'ratingPublication/' + id, rating, {
+      headers: this.headers
     });
-
   }
-  fileUpload(id: number, file: File) {
+
+
+  list(id): Observable<Rating[]> {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + JSON.parse(<string>localStorage.getItem('token'))});
-    let formdata = new FormData();
-    formdata.append('id', id.toString());
-    formdata.append('file', file);
-    console.log(id);
-    return this.http.post(this.baseUrl + 'uploadFile', formdata, {
+    // @ts-ignore
+    return this.http.get(this.baseUrl + 'ratingPublication/' + id, {
       headers: this.headers
     });
   }

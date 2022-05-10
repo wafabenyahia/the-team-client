@@ -9,7 +9,7 @@ export class Publication {
    dateCreation: any ;
    location: any ;
    mood: any ;
-   idUserIden?: any[] ;
+   idUserIden: number[] = [] ;
   resources: Resource[] = [];
   ratings: Rating[] = [];
   comments: Comment[] = [] ;

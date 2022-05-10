@@ -1,0 +1,22 @@
+
+mat-dialog-container {
+    background-color: transparent !important;
+    padding: 0px 0px 0px 0px !important;
+    overflow: hidden !important;
+}
+.nods{
+    background-color: transparent;
+    border: transparent;
+    margin-right: 5px;
+}
+.nods,mat-icon{
+    font-size: 20px;
+}
+.nods,i{
+    font-size: 20px;
+}
+mat-selection-list {
+    max-height: 200px;
+    overflow: auto;
+}
+
