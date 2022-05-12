@@ -4,7 +4,7 @@ import {User} from '../../user+role/user';
 import {Survey} from './survey';
 
 export class Publication {
-   id: any  ;
+   id: number  ;
    topic: any ;
    dateCreation: any ;
    location: any ;

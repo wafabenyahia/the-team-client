@@ -36,6 +36,12 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {RemovePublicationComponent} from './publication/remove-publication/remove-publication.component';
+import { CommentComponent } from './comment/comment.component';
+import { RemoveCommentComponent } from './comment/remove-comment/remove-comment.component';
+import { UpdateCommentComponent } from './comment/update-comment/update-comment.component';
+import { AddSousCommentComponent } from './comment/add-sous-comment/add-sous-comment.component';
+import { OpenChartEstimationComponent } from './comment/open-chart-estimation/open-chart-estimation.component';
+import { UpdatePublicationComponent } from './publication/update-publication/update-publication.component';
 
 
 @NgModule({
@@ -55,7 +61,13 @@ import {RemovePublicationComponent} from './publication/remove-publication/remov
       PublicationComponent,
       AddPublicationComponent,
       CameraComponent,
-      RemovePublicationComponent
+      RemovePublicationComponent,
+      CommentComponent,
+      RemoveCommentComponent,
+      UpdateCommentComponent,
+      AddSousCommentComponent,
+      OpenChartEstimationComponent,
+      UpdatePublicationComponent
   ],
   imports: [
     BrowserModule,

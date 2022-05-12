@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import {PublicityComponent} from './publicity/publicity.component';
 import {MainComponent} from './main/main.component';
 import {PublicationComponent} from './publication/publication.component';
+import {CommentComponent} from './comment/comment.component';
 
 const routes: Routes = [
     // { path: 'home',             component: HomeComponent },
@@ -34,6 +35,10 @@ const routes: Routes = [
             // { path: 'login',          component: LoginComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             {path: 'publicity', component: PublicityComponent},
+            {
+                path: 'comment/:id',
+                component: CommentComponent
+            }
             // {path: 'publication', component: PublicationComponent},
             // {path: 'event', component: EventComponent},
             // {path: 'publicity', component: PublicityComponent}

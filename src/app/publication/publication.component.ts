@@ -11,6 +11,7 @@ import {Rating} from '../model/forum/publication/rating';
 import {RatingService} from '../service/Forum/publication/rating.service';
 import {RemovePublicationComponent} from './remove-publication/remove-publication.component';
 import {IAlert} from '../sections/alerts-section/alerts-section.component';
+import {Comment} from '../model/forum/publication/comment';
 
 @Component({
   selector: 'app-publication',
@@ -45,8 +46,11 @@ export class PublicationComponent implements OnInit {
   // private backup: IAlert;
   icon: string = null;
   public isVisible = false;
+  comment: Comment;
+  verif = null ;
 
   ngOnInit(): void {
+    this.comment = new Comment();
     //console.log(this.findbyId(1));
     this.user = new User();
     this.userService.findUserWithToken().subscribe(val => {
@@ -120,7 +124,7 @@ export class PublicationComponent implements OnInit {
           strong: 'Danger!',
           message: 'you are added your option',
           icon: 'ni ni-support-16'
-        }
+        };
       }
       this.isVisible = true;
       setTimeout(() => this.isVisible = false, 2500);
